@@ -3,7 +3,9 @@ namespace Inventory_App
     internal static class Program
     {
         /// <summary>
-        ///  The main entry point for the application.
+        /// Punto de entrada principal para la aplicación.
+        /// Su función es inicializar la aplicación de Windows Forms
+        /// y asegurar que el primer formulario (Form1) se ejecute.
         /// </summary>
         [STAThread]
         static void Main()
