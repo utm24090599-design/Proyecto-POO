@@ -96,7 +96,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(825, 450);
             Controls.Add(btnFinalizar);
             Controls.Add(btnCapturar);
             Controls.Add(nudCantidad);
@@ -105,7 +105,6 @@
             Controls.Add(label1);
             Name = "Form1";
             Text = "Captura de materiales";
-            
             ((System.ComponentModel.ISupportInitialize)nudCantidad).EndInit();
             ResumeLayout(false);
             PerformLayout();
