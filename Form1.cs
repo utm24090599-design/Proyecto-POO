@@ -70,6 +70,8 @@ namespace Inventory_App
             {
                 cmbTipoMaterial.SelectedIndex = 0;
             }
+            nudCantidad.Minimum = 0;
+            nudCantidad.Maximum = 1000000;
         }
 
         /// <summary>
@@ -88,7 +90,7 @@ namespace Inventory_App
         private void btnCapturar_Click(object sender, EventArgs e)
         {
             // --- VALIDACIÓN DE ENTRADA ---
-        
+
             // Asegura que se haya seleccionado un tipo de material.
             if (cmbTipoMaterial.SelectedItem == null)
             {
@@ -153,6 +155,19 @@ namespace Inventory_App
             }
 
             MessageBox.Show(sb.ToString(), "Resumen de Materiales", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void nudCantidad_ValueChanged(object sender, EventArgs e)
+        {
+
+            int valor = (int)nudCantidad.Value;
+
+            if (valor > 1000)
+            {
+                MessageBox.Show("No puedes superar 1000 kg (1 tonelada).", "Cantidad Excedida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                // Restablecer al máximo permitido
+                nudCantidad.Value = 1000;
+            }
         }
     }
 }

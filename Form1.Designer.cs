@@ -69,6 +69,7 @@
             nudCantidad.Name = "nudCantidad";
             nudCantidad.Size = new Size(150, 27);
             nudCantidad.TabIndex = 3;
+            nudCantidad.ValueChanged += nudCantidad_ValueChanged;
             // 
             // btnCapturar
             // 
@@ -105,7 +106,6 @@
             Controls.Add(label1);
             Name = "Form1";
             Text = "Captura de materiales";
-            
             ((System.ComponentModel.ISupportInitialize)nudCantidad).EndInit();
             ResumeLayout(false);
             PerformLayout();
