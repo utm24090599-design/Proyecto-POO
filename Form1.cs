@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic; // Para usar List<T>
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics.CodeAnalysis;
 using System.Drawing;
 using System.Linq; // Para usar .Last()
 using System.Text;
@@ -51,6 +52,7 @@ namespace Inventory_App
         /// y configurar su comportamiento para que solo se pueda seleccionar de la lista.
         /// Tipo de ciclo utilizado: Ninguno (las operaciones son secuenciales de inicialización).
         /// </summary>
+        private ListBox listInventario;
         private void Form1_Load(object sender, EventArgs e)
         {
             // Carga los tipos de material predefinidos en la ComboBox.
@@ -70,6 +72,11 @@ namespace Inventory_App
             {
                 cmbTipoMaterial.SelectedIndex = 0;
             }
+            listInventario = new ListBox();
+            listInventario.Location = new Point(10, 10);
+            listInventario.Size = new Size(250, 300);
+            this.Controls.Add(listInventario);
+            listInventario.Visible = false;
         }
 
         /// <summary>
@@ -130,9 +137,30 @@ namespace Inventory_App
         /// Por ahora, solo muestra un mensaje informativo, ya que la lógica completa de finalización
         /// y apertura del inventario es responsabilidad de otro miembro del equipo.
         /// </summary>
+
+
+
+            // Se hace una lista para mostrar los registros anteriores
         private void btnFinalizar_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Esta función será implementada por el equipo pronto", "Función en Desarrollo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            if (!this.Controls.Contains(listInventario))
+            {
+                listInventario.Location = new Point(10, 10);
+                listInventario.Size = new Size(250, 300);
+            }
+
+            if(listInventario.Items.Count == 0)
+            {
+                listInventario.Items.Add("Inventario: ");
+                listInventario.Items.Add("------------------");
+            }
+            // Se hace el ciclo para recoger todos los datos agregados
+            for (int i = tiposMateriales.Count -1; i >= 0; i--)
+            {
+               listInventario.Items.Add($"Tipo: {tiposMateriales[i]}, Cantidad: {cantidades[i]} kg");
+            }
+            listInventario.Items.Add("");
+            listInventario.Visible = true;
         }
     }
 }
