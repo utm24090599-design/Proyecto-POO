@@ -95,6 +95,7 @@ namespace Inventory_App
         private void btnCapturar_Click(object sender, EventArgs e)
         {
             // --- VALIDACIÓN DE ENTRADA ---
+        
             // Asegura que se haya seleccionado un tipo de material.
             if (cmbTipoMaterial.SelectedItem == null)
             {
@@ -143,6 +144,7 @@ namespace Inventory_App
             // Se hace una lista para mostrar los registros anteriores
         private void btnFinalizar_Click(object sender, EventArgs e)
         {
+<<<<<<< HEAD
             if (!this.Controls.Contains(listInventario))
             {
                 listInventario.Location = new Point(10, 10);
@@ -161,6 +163,28 @@ namespace Inventory_App
             }
             listInventario.Items.Add("");
             listInventario.Visible = true;
+=======
+            if (tiposMateriales.Count == 0)
+            {
+                MessageBox.Show("No hay materiales registrados.", "Inventario vacío", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            // Agrupar por tipo de material y sumar cantidades
+            var resumen = tiposMateriales
+                .Select((tipo, idx) => new { Tipo = tipo, Cantidad = cantidades[idx] })
+                .GroupBy(x => x.Tipo)
+                .OrderBy(g => g.Key);
+
+            StringBuilder sb = new StringBuilder();
+            foreach (var grupo in resumen)
+            {
+                int total = grupo.Sum(x => x.Cantidad);
+                sb.AppendLine($"Material: {grupo.Key}, Cantidad total: {total} kg");
+            }
+
+            MessageBox.Show(sb.ToString(), "Resumen de Materiales", MessageBoxButtons.OK, MessageBoxIcon.Information);
+>>>>>>> 9f826a8857c20595a4c488ad3e62d92c81265dc8
         }
     }
 }
