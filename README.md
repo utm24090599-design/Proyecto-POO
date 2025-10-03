@@ -69,3 +69,20 @@ var resumen = tiposMateriales
 - Validates numeric inputs to prevent exceptions
 - Limits maximum input values to prevent overflow
 # This program is not saved data to a file CSV or database, it is only save temporaly data.
+
+#Some questions
+1. En el código poner comentarios que respondan estas preguntas: qué tipos de datos básico estoy usando y por qué.
+   -Tipos de datos basicos: String e int 
+3. Qué tipo de ciclos utilizo en mi app y por qué. (While, do while, for each, for).
+   -foreach y for 
+5. Qué hace void main?
+   -Es la función principal que ejecuta todo el código llamado dentro de el.
+7. Cuál es la diferencia entre console.readline y console.writeline.
+   -.readline permite escribir en la consola mientras .writeline solamente muesta texto en la consola.
+Si llegamos a hacerlo en consola, explicar qué/cuáles son las equivalencias en forms(equivalencias de readline y writeline).
+   No se hizo en consola.
+9. Qué son los arrays y cómo se usan en nuestra aplicación.
+    -Los arrays son listas de datos donde puedo guardarlos dentro de una variable que puede ser iterada.
+11. Puntos adicionales, investigar qué es LINQ y cómo podríamos implementarlo para hacer nuestra aplicación.
+    -Language Integrated Query (LINQ) es el nombre de un conjunto de tecnologías basadas en la integración de funcionalidades de consulta directamente en el lenguaje C#.
+    -Una forma de integrarlo seria guardar datos en una base de datos u archivo CSV.
