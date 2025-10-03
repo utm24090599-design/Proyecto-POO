@@ -70,7 +70,7 @@ var resumen = tiposMateriales
 - Limits maximum input values to prevent overflow
 # This program is not saved data to a file CSV or database, it is only save temporaly data.
 
-#Some questions
+# Some questions
 1. En el código poner comentarios que respondan estas preguntas: qué tipos de datos básico estoy usando y por qué.
    -Tipos de datos basicos: String e int 
 3. Qué tipo de ciclos utilizo en mi app y por qué. (While, do while, for each, for).
