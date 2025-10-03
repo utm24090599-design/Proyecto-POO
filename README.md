@@ -62,3 +62,10 @@ var resumen = tiposMateriales
 - All data have a defined structure
 - Skips show if the list is empty
 - Shows a message if no data is entered
+
+## Warnings
+- Ensure valid input to avoid runtime errors
+- Handles empty inputs gracefully
+- Validates numeric inputs to prevent exceptions
+- Limits maximum input values to prevent overflow
+# This program is not saved data to a file CSV or database, it is only save temporaly data.
