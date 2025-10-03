@@ -144,7 +144,7 @@ namespace Inventory_App
             // Se hace una lista para mostrar los registros anteriores
         private void btnFinalizar_Click(object sender, EventArgs e)
         {
-<<<<<<< HEAD
+//<<<<<<< HEAD
             if (!this.Controls.Contains(listInventario))
             {
                 listInventario.Location = new Point(10, 10);
@@ -163,7 +163,7 @@ namespace Inventory_App
             }
             listInventario.Items.Add("");
             listInventario.Visible = true;
-=======
+//=======
             if (tiposMateriales.Count == 0)
             {
                 MessageBox.Show("No hay materiales registrados.", "Inventario vacío", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -181,10 +181,23 @@ namespace Inventory_App
             {
                 int total = grupo.Sum(x => x.Cantidad);
                 sb.AppendLine($"Material: {grupo.Key}, Cantidad total: {total} kg");
+                
             }
+            // Se toman los valores en cantidades y son tomandos el maximo y minimo dentro de los materiales vendidos.
+             int cantidamenos = cantidades.Min();
+             int cantidadmas = cantidades.Max();
+            // id de los materiales para imprimir su nombre relacionado con su venta
+            int idmas = cantidades.IndexOf(cantidadmas);
+            int idmenos = cantidades.IndexOf(cantidamenos);
+
+            // Final del registro[Materiales mas/menos vendidos ]
+            sb.AppendLine($"Material mas vendido: {tiposMateriales[idmas]} cantidad:{ cantidadmas}");
+            sb.AppendLine($"Material menos vendido: {tiposMateriales[idmenos]} cantidad:{ cantidamenos}");
+
 
             MessageBox.Show(sb.ToString(), "Resumen de Materiales", MessageBoxButtons.OK, MessageBoxIcon.Information);
->>>>>>> 9f826a8857c20595a4c488ad3e62d92c81265dc8
+//>>>>>>> 9f826a8857c20595a4c488ad3e62d92c81265dc8
+//SWHERE
         }
     }
 }
