@@ -32,77 +32,82 @@
             cmbTipoMaterial = new ComboBox();
             label2 = new Label();
             nudCantidad = new NumericUpDown();
-            btnCapturar = new Button();
-            btnFinalizar = new Button();
+            BtnCapturar = new Button();
+            BtnFinalizar = new Button();
             ((System.ComponentModel.ISupportInitialize)nudCantidad).BeginInit();
             SuspendLayout();
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(321, 33);
+            label1.Location = new Point(272, 25);
             label1.Name = "label1";
-            label1.Size = new Size(119, 20);
+            label1.Size = new Size(93, 15);
             label1.TabIndex = 0;
             label1.Text = "Tipo de material";
             // 
             // cmbTipoMaterial
             // 
             cmbTipoMaterial.FormattingEnabled = true;
-            cmbTipoMaterial.Location = new Point(302, 65);
+            cmbTipoMaterial.Location = new Point(272, 139);
+            cmbTipoMaterial.Margin = new Padding(3, 2, 3, 2);
             cmbTipoMaterial.Name = "cmbTipoMaterial";
-            cmbTipoMaterial.Size = new Size(151, 28);
+            cmbTipoMaterial.Size = new Size(198, 23);
             cmbTipoMaterial.TabIndex = 1;
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(330, 113);
+            label2.Location = new Point(529, 25);
             label2.Name = "label2";
-            label2.Size = new Size(99, 20);
+            label2.Size = new Size(79, 15);
             label2.TabIndex = 2;
             label2.Text = "Cantidad (kg)";
             // 
             // nudCantidad
             // 
-            nudCantidad.Location = new Point(302, 154);
+            nudCantidad.Location = new Point(529, 139);
+            nudCantidad.Margin = new Padding(3, 2, 3, 2);
             nudCantidad.Name = "nudCantidad";
-            nudCantidad.Size = new Size(150, 27);
+            nudCantidad.Size = new Size(181, 23);
             nudCantidad.TabIndex = 3;
             // 
-            // btnCapturar
+            // BtnCapturar
             // 
-            btnCapturar.BackColor = Color.FromArgb(128, 255, 128);
-            btnCapturar.Location = new Point(326, 204);
-            btnCapturar.Name = "btnCapturar";
-            btnCapturar.Size = new Size(103, 54);
-            btnCapturar.TabIndex = 4;
-            btnCapturar.Text = "Registrar material";
-            btnCapturar.UseVisualStyleBackColor = false;
-            btnCapturar.Click += btnCapturar_Click;
+            BtnCapturar.BackColor = Color.FromArgb(128, 255, 128);
+            BtnCapturar.Location = new Point(620, 287);
+            BtnCapturar.Margin = new Padding(3, 2, 3, 2);
+            BtnCapturar.Name = "BtnCapturar";
+            BtnCapturar.Size = new Size(90, 40);
+            BtnCapturar.TabIndex = 4;
+            BtnCapturar.Text = "Registrar material";
+            BtnCapturar.UseVisualStyleBackColor = false;
+            BtnCapturar.Click += BtnCapturar_Click;
             // 
-            // btnFinalizar
+            // BtnFinalizar
             // 
-            btnFinalizar.BackColor = Color.Red;
-            btnFinalizar.Location = new Point(287, 291);
-            btnFinalizar.Name = "btnFinalizar";
-            btnFinalizar.Size = new Size(175, 56);
-            btnFinalizar.TabIndex = 5;
-            btnFinalizar.Text = "Finalizar Captura y Ver Inventario";
-            btnFinalizar.UseVisualStyleBackColor = false;
-            btnFinalizar.Click += btnFinalizar_Click;
+            BtnFinalizar.BackColor = Color.Red;
+            BtnFinalizar.Location = new Point(272, 285);
+            BtnFinalizar.Margin = new Padding(3, 2, 3, 2);
+            BtnFinalizar.Name = "BtnFinalizar";
+            BtnFinalizar.Size = new Size(153, 42);
+            BtnFinalizar.TabIndex = 5;
+            BtnFinalizar.Text = "Finalizar Captura y Ver Inventario";
+            BtnFinalizar.UseVisualStyleBackColor = false;
+            BtnFinalizar.Click += BtnFinalizar_Click;
             // 
             // Form1
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(825, 450);
-            Controls.Add(btnFinalizar);
-            Controls.Add(btnCapturar);
+            ClientSize = new Size(722, 338);
+            Controls.Add(BtnFinalizar);
+            Controls.Add(BtnCapturar);
             Controls.Add(nudCantidad);
             Controls.Add(label2);
             Controls.Add(cmbTipoMaterial);
             Controls.Add(label1);
+            Margin = new Padding(3, 2, 3, 2);
             Name = "Form1";
             Text = "Captura de materiales";
             ((System.ComponentModel.ISupportInitialize)nudCantidad).EndInit();
@@ -117,7 +122,7 @@
         private System.Windows.Forms.ComboBox cmbTipoMaterial;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.NumericUpDown nudCantidad;
-        private System.Windows.Forms.Button btnCapturar;
-        private System.Windows.Forms.Button btnFinalizar;
+        private System.Windows.Forms.Button BtnCapturar;
+        private System.Windows.Forms.Button BtnFinalizar;
     }
 }

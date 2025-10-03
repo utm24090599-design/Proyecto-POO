@@ -53,14 +53,17 @@ namespace Inventory_App
         /// Tipo de ciclo utilizado: Ninguno (las operaciones son secuenciales de inicialización).
         /// </summary>
         private ListBox listInventario;
+
+        private string[] typeOfMaterials = { "Cemento", "Cal", "Yeso", "Fierro", "Arena", "Castillo" }; // Array de tipos de materiales
+
         private void Form1_Load(object sender, EventArgs e)
         {
             // Carga los tipos de material predefinidos en la ComboBox.
-            cmbTipoMaterial.Items.Add("Cemento");
-            cmbTipoMaterial.Items.Add("Cal");
-            cmbTipoMaterial.Items.Add("Yeso");
-            cmbTipoMaterial.Items.Add("Fierro");
-            cmbTipoMaterial.Items.Add("Arena");
+
+            foreach (var material in typeOfMaterials)
+            {
+                cmbTipoMaterial.Items.Add(material); 
+            }
 
             // Configura la ComboBox para que solo permita seleccionar elementos de su lista,
             // impidiendo que el usuario escriba texto no válido.
@@ -92,7 +95,7 @@ namespace Inventory_App
         /// y <c>MessageBox.Show()</c> para mostrar mensajes al usuario, en lugar de la consola.
         /// estas funciones cambiarán según las actividades del equipo
         /// </summary>
-        private void btnCapturar_Click(object sender, EventArgs e)
+        private void BtnCapturar_Click(object sender, EventArgs e)
         {
             // --- VALIDACIÓN DE ENTRADA ---
         
@@ -142,62 +145,64 @@ namespace Inventory_App
 
 
             // Se hace una lista para mostrar los registros anteriores
-        private void btnFinalizar_Click(object sender, EventArgs e)
+        private void BtnFinalizar_Click(object sender, EventArgs e)
         {
-//<<<<<<< HEAD
+            if (tiposMateriales.Count == 0)
+            {
+                MessageBox.Show("No hay materiales registrados.", "Inventario Vacío", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            //<<<<<<< HEAD
             if (!this.Controls.Contains(listInventario))
             {
                 listInventario.Location = new Point(10, 10);
                 listInventario.Size = new Size(250, 300);
             }
 
-            if(listInventario.Items.Count == 0)
+            if (listInventario.Items.Count == 0)
             {
                 listInventario.Items.Add("Inventario: ");
                 listInventario.Items.Add("------------------");
             }
             // Se hace el ciclo para recoger todos los datos agregados
-            for (int i = tiposMateriales.Count -1; i >= 0; i--)
+            for (int i = tiposMateriales.Count - 1; i >= 0; i--)
             {
-               listInventario.Items.Add($"Tipo: {tiposMateriales[i]}, Cantidad: {cantidades[i]} kg");
+                listInventario.Items.Add($"Tipo: {tiposMateriales[i]}, Cantidad: {cantidades[i]} kg");
             }
             listInventario.Items.Add("");
             listInventario.Visible = true;
-//=======
-            if (tiposMateriales.Count == 0)
-            {
-                MessageBox.Show("No hay materiales registrados.", "Inventario vacío", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }
+            //=======
 
             // Agrupar por tipo de material y sumar cantidades
             var resumen = tiposMateriales
-                .Select((tipo, idx) => new { Tipo = tipo, Cantidad = cantidades[idx] })
-                .GroupBy(x => x.Tipo)
-                .OrderBy(g => g.Key);
+                .Select((tipo, idx) => new { Tipo = tipo, Cantidad = cantidades[idx] }) //Seleciona cada elemento y su inice
+                .GroupBy(x => x.Tipo) // Agrupa por tipo de material donde x se declara como un a veriable temporal y el elemento "=>" es una funcion lambda
+                .OrderBy(g => g.Key); // Ordena los grupos por el nombre del material (Key)
 
-            StringBuilder sb = new StringBuilder();
-            foreach (var grupo in resumen)
+            StringBuilder sb = new StringBuilder(); // StringBuilder para construir el mensaje de resumen
+            foreach (var grupo in resumen) // Recorre cada grupo de materiales
             {
-                int total = grupo.Sum(x => x.Cantidad);
-                sb.AppendLine($"Material: {grupo.Key}, Cantidad total: {total} kg");
-                
+                int total = grupo.Sum(x => x.Cantidad); // Suma las cantidades en el grupo actual
+                sb.AppendLine($"Material: {grupo.Key}, Cantidad total: {total} kg"); // Agrega una línea al resumen
+
             }
             // Se toman los valores en cantidades y son tomandos el maximo y minimo dentro de los materiales vendidos.
-             int cantidamenos = cantidades.Min();
-             int cantidadmas = cantidades.Max();
+            int cantidamenos = cantidades.Min();
+            int cantidadmas = cantidades.Max();
             // id de los materiales para imprimir su nombre relacionado con su venta
             int idmas = cantidades.IndexOf(cantidadmas);
             int idmenos = cantidades.IndexOf(cantidamenos);
 
             // Final del registro[Materiales mas/menos vendidos ]
-            sb.AppendLine($"Material mas vendido: {tiposMateriales[idmas]} cantidad:{ cantidadmas}");
-            sb.AppendLine($"Material menos vendido: {tiposMateriales[idmenos]} cantidad:{ cantidamenos}");
+            sb.AppendLine($"Material mas vendido: {tiposMateriales[idmas]} cantidad:{cantidadmas}");
+            sb.AppendLine($"Material menos vendido: {tiposMateriales[idmenos]} cantidad:{cantidamenos}");
 
 
             MessageBox.Show(sb.ToString(), "Resumen de Materiales", MessageBoxButtons.OK, MessageBoxIcon.Information);
-//>>>>>>> 9f826a8857c20595a4c488ad3e62d92c81265dc8
-//SWHERE
+
+            tiposMateriales.Clear(); // Limpia las listas para una nueva sesión de captura
+            cantidades.Clear(); // Limpia las listas para una nueva sesión de captura
         }
     }
 }
